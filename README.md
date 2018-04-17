@@ -1,2 +1,2 @@
 # SpringBootPractice
-会议系统，类似QCon
+big event management system
