@@ -1,4 +1,4 @@
-/*package com.archimedes.service;
+package com.archimedes.service;
 
 import java.util.Optional;
 
@@ -26,4 +26,3 @@ public class ConferenceServiceImpl implements ConferenceService {
 	}
 
 }
-*/
