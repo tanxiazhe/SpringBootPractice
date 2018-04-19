@@ -1,30 +1,42 @@
 package com.archimedes.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import javax.persistence.*;
+
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import io.swagger.annotations.ApiModelProperty;
+
 
 @Entity
-public class Conference {
-	@Id
-	Long id;
+@Setter
+@Getter
+public class Conference extends BaseModel {
+	@ApiModelProperty
+	private String name;
 	
-	String name;
+	@JsonManagedReference
+	@ApiModelProperty
+	@OneToMany(mappedBy= "conference",  cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	private List<Presentation> presentations;
 
-	public Long getId() {
-		return id;
-	}
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	@ApiModelProperty(dataType = "java.util.Date")
+	private Timestamp startDate;
+	
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	@ApiModelProperty(dataType = "java.util.Date")
+	private Timestamp endDate;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
-	public String getName() {
-		return name;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
 	
 	
 }
