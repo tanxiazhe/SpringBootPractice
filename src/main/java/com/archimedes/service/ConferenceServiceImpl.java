@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import com.archimedes.common.util.ExceptionHandlerUtils;
 import com.archimedes.model.Conference;
+import com.archimedes.model.Presentation;
 import com.archimedes.persistence.ConferenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,9 @@ public class ConferenceServiceImpl implements ConferenceService {
     public void updateConference(Long id, Conference conference) {
     	ExceptionHandlerUtils.throwIfNonexisting(conferenceRepository,id);
     	ExceptionHandlerUtils.throwIfInconsistent(id, conference.getId());
+    	Optional<Conference> existdConference = conferenceRepository.findById(id);
+    	conference.setVersion(existdConference.get().getVersion());
+    	
     	conferenceRepository.save(conference);
     }
 

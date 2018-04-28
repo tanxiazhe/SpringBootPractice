@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -25,7 +26,7 @@ public class Conference extends BaseModel {
 	@JsonManagedReference(value="conference-presentation")
 	@ApiModelProperty
 	@OneToMany(mappedBy= "conference",  cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-	private List<Presentation> presentations;
+	private List<Presentation> presentations = new ArrayList<Presentation>();
 
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	@ApiModelProperty(dataType = "java.sql.Timestamp")

@@ -2,6 +2,7 @@ package com.archimedes.service;
 
 import com.archimedes.common.util.ExceptionHandlerUtils;
 import com.archimedes.model.Presentation;
+import com.archimedes.model.User;
 import com.archimedes.persistence.PresentationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,6 +45,9 @@ public class PresentationServiceImpl implements PresentationService {
     public void updatePresentation(Long id, Presentation presentation) {
     	ExceptionHandlerUtils.throwIfNonexisting(presentationRepository,id);
     	ExceptionHandlerUtils.throwIfInconsistent(id, presentation.getId());
+    	Optional<Presentation> existdPresentation = presentationRepository.findById(id);
+    	presentation.setVersion(existdPresentation.get().getVersion());
+    	
         presentationRepository.save(presentation);
     }
 

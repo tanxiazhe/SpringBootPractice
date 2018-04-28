@@ -1,18 +1,25 @@
 package com.archimedes.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Setter
@@ -30,7 +37,7 @@ public class Presentation  extends BaseModel{
 	@JsonManagedReference(value="presentation-tag")
 	@ApiModelProperty
 	@OneToMany( mappedBy = "presentation" ,cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-	private List<Tag> tag ;
+	private List<Tag> tag  = new ArrayList<Tag>();
 	
 	@ApiModelProperty
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
@@ -51,6 +58,6 @@ public class Presentation  extends BaseModel{
 	private Conference conference;
 
 	@ManyToMany( mappedBy = "presentations" )
-	private List<BaseUser> audiences ;
+	private List<BaseUser> audiences =new ArrayList<BaseUser>();
 
 }

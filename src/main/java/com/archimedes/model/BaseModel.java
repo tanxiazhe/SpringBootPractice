@@ -44,7 +44,11 @@ public abstract class BaseModel {
         return id;
     }
 
-    public Long getVersion() {
+    public void setVersion(Long version) {
+		this.version = version;
+	}
+
+	public Long getVersion() {
         return version;
     }
 

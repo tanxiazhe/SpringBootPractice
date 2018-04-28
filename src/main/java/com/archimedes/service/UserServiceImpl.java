@@ -37,6 +37,9 @@ public class UserServiceImpl implements UserService {
 	public void updateUser(long id, User user) {
 		ExceptionHandlerUtils.throwIfNonexisting(userRepository,id);
     	ExceptionHandlerUtils.throwIfInconsistent(id, user.getId());
+    	Optional<User> existdUser = userRepository.findById(id);
+    	user.setVersion(existdUser.get().getVersion());
+    	
 		userRepository.save(user);
 	}
 }
