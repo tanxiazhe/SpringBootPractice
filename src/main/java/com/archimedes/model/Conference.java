@@ -22,17 +22,17 @@ public class Conference extends BaseModel {
 	@ApiModelProperty
 	private String name;
 	
-	@JsonManagedReference
+	@JsonManagedReference(value="conference-presentation")
 	@ApiModelProperty
 	@OneToMany(mappedBy= "conference",  cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	private List<Presentation> presentations;
 
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-	@ApiModelProperty(dataType = "java.util.Date")
+	@ApiModelProperty(dataType = "java.sql.Timestamp")
 	private Timestamp startDate;
 	
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-	@ApiModelProperty(dataType = "java.util.Date")
+	@ApiModelProperty(dataType = "java.sql.Timestamp")
 	private Timestamp endDate;
 
 

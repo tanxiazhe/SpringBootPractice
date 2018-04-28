@@ -18,13 +18,13 @@ public class Tag  extends BaseModel{
 	
 	private String name;
 	
-	@JsonBackReference
+	@JsonBackReference(value="presentation-tag")
 	@ManyToOne( fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn (name="presentation_id",referencedColumnName="id",nullable=false,unique=true)
 	private Presentation presentation;
 	
 	
-	@JsonBackReference
+	@JsonBackReference(value="baseUser-tag")
 	@ManyToOne( fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn (name="baseUser_id",referencedColumnName="id",nullable=false,unique=true)
 	private BaseUser baseUser;

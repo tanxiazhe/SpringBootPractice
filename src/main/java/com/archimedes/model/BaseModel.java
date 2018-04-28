@@ -13,13 +13,23 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModelProperty;
+
 @MappedSuperclass
 public abstract class BaseModel {
 
+	@JsonIgnore
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	@ApiModelProperty(dataType = "java.sql.Timestamp")
     @Basic(optional = false)
     @Column(insertable = true, updatable = false)
     private Timestamp createdAt;
 
+	@JsonIgnore
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	@ApiModelProperty(dataType = "java.sql.Timestamp")
     @Column(insertable = false, updatable = true)
     private Timestamp updatedAt;
 

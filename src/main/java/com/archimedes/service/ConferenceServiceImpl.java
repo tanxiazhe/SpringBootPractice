@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.archimedes.common.util.ExceptionHandlerUtils;
 import com.archimedes.model.Conference;
 import com.archimedes.persistence.ConferenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,13 @@ public class ConferenceServiceImpl implements ConferenceService {
 
     @Override
     public void addConference(Conference conference) {
-
+    	ExceptionHandlerUtils.throwIfIdNotNull(conference.getId());
         conferenceRepository.save(conference);
     }
 
     @Override
     public Optional<Conference> getConference(Long id) {
+    	ExceptionHandlerUtils.throwIfNonexisting(conferenceRepository,id);
         return conferenceRepository.findById(id);
     }
 
@@ -38,8 +40,10 @@ public class ConferenceServiceImpl implements ConferenceService {
     }
 
     @Override
-    public void updateConference(long id, Conference conference) {
-        conferenceRepository.save(conference);
+    public void updateConference(Long id, Conference conference) {
+    	ExceptionHandlerUtils.throwIfNonexisting(conferenceRepository,id);
+    	ExceptionHandlerUtils.throwIfInconsistent(id, conference.getId());
+    	conferenceRepository.save(conference);
     }
 
 }

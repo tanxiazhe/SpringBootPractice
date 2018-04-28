@@ -14,5 +14,5 @@ public interface PresentationService {
 
     List<Presentation> getAllPresentations();
 
-    void updatePresentation(long id, Presentation presentation);
+    void updatePresentation(Long id, Presentation presentation);
 }

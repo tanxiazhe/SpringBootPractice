@@ -1,4 +1,3 @@
-package com.archimedes.model;
 //package com.sap.grc.archimedes.model;
 //
 //import javax.persistence.*;

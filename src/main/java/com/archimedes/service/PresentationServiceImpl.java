@@ -1,6 +1,6 @@
 package com.archimedes.service;
 
-import com.archimedes.model.Conference;
+import com.archimedes.common.util.ExceptionHandlerUtils;
 import com.archimedes.model.Presentation;
 import com.archimedes.persistence.PresentationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,20 +19,21 @@ public class PresentationServiceImpl implements PresentationService {
 
     @Override
     public void addPresentation(Presentation presentation) {
-
+    	ExceptionHandlerUtils.throwIfIdNotNull(presentation.getId());
         presentationRepository.save(presentation);
 
     }
 
     @Override
     public Optional<Presentation> getPresentation(Long id) {
+    	ExceptionHandlerUtils.throwIfNonexisting(presentationRepository,id);
         return presentationRepository.findById(id);
     }
     
     @Override
     public List<Presentation> getAllPresentations(){
     	Iterable<Presentation> presentations =  presentationRepository.findAll();
-        List<Presentation> presentationList = new ArrayList();
+        List<Presentation> presentationList = new ArrayList<Presentation>();
     	for(Presentation presentation:presentations){
             presentationList.add(presentation);
         }
@@ -40,7 +41,9 @@ public class PresentationServiceImpl implements PresentationService {
     }
 
     @Override
-    public void updatePresentation(long id, Presentation presentation) {
+    public void updatePresentation(Long id, Presentation presentation) {
+    	ExceptionHandlerUtils.throwIfNonexisting(presentationRepository,id);
+    	ExceptionHandlerUtils.throwIfInconsistent(id, presentation.getId());
         presentationRepository.save(presentation);
     }
 

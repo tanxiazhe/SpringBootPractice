@@ -15,5 +15,5 @@ public interface ConferenceService {
 
 	List<Conference> getConferences();
 
-	void updateConference(long id, Conference conference);
+	void updateConference(Long id, Conference conference);
 }

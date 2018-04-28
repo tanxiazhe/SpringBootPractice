@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.ArrayList;
@@ -30,9 +32,11 @@ public class BaseUser extends BaseModel{
 	@ApiModelProperty
 	private String phone;
 
+	@JsonManagedReference(value="baseUser-tag")
 	@ApiModelProperty
     @OneToMany(mappedBy="baseUser", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Tag> tag;
+	
 //used when type is audience
 	@ManyToMany
     @JoinTable(name="audience_presentation",joinColumns=@JoinColumn(name="audience_id"),
@@ -41,4 +45,7 @@ public class BaseUser extends BaseModel{
 
 	@ApiModelProperty
 	private String type;
+	
+	@ApiModelProperty
+	private String password;
 }

@@ -27,7 +27,7 @@ public class Presentation  extends BaseModel{
 	@ApiModelProperty
 	private String location;
 	
-	@JsonManagedReference
+	@JsonManagedReference(value="presentation-tag")
 	@ApiModelProperty
 	@OneToMany( mappedBy = "presentation" ,cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	private List<Tag> tag ;
@@ -36,15 +36,15 @@ public class Presentation  extends BaseModel{
 	@OneToOne( cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	private BaseUser speaker;
 	
-	@ApiModelProperty(dataType = "java.util.Date")
+	@ApiModelProperty(dataType = "java.sql.Timestamp")
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Timestamp startDate;
 	
-	@ApiModelProperty(dataType = "java.util.Date")
+	@ApiModelProperty(dataType = "java.sql.Timestamp")
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Timestamp endDate;
 	
-	@JsonBackReference
+	@JsonBackReference(value="conference-presentation")
 	@ApiModelProperty
 	@ManyToOne( fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn (name="conference_id",referencedColumnName="id",nullable=false,unique=true)
