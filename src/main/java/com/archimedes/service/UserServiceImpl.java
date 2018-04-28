@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.archimedes.common.exception.NotFoundException;
 import com.archimedes.common.util.ExceptionHandlerUtils;
 import com.archimedes.model.User;
 import com.archimedes.persistence.UserRepository;
@@ -42,4 +43,17 @@ public class UserServiceImpl implements UserService {
     	
 		userRepository.save(user);
 	}
+
+	@Override
+	public void getUserByUserNameAndPassword( String userName, String password) {
+		User existdUser = userRepository.findByUserName(userName); 
+		if(existdUser ==null){
+			NotFoundException notFoundException = new NotFoundException("request failed, userName  "+userName + " not found");
+			throw notFoundException;
+		}else if(!existdUser.getPassword().equals(password)){
+			NotFoundException notFoundException = new NotFoundException("request failed, password is wrong.");
+			throw notFoundException;
+		}
+	}
+		
 }
