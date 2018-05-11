@@ -8,10 +8,10 @@ Download and install postgresql (with pgAdmin4 if needed)
 
 Create database named 'archimedes'
 
-Modify application.properties as you need.
+Modify application-dev.properties as you need.
 
-Run ArchimedesApplication.java under archemedes-web
+Run ArchimedesApplication.java 
 
-You can find API document running at localhost:8090/swagger-ui.html
+You can find API document running at localhost:8888/swagger-ui.html
 
 Play with the APIs as you like
