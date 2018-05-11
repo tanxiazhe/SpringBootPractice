@@ -1,9 +1,9 @@
 package com.archimedes.service;
 
-import com.archimedes.model.Conference;
-
 import java.util.List;
 import java.util.Optional;
+
+import com.archimedes.domain.Conference;
 
 
 

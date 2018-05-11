@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.archimedes.common.exception.NotFoundException;
 import com.archimedes.common.util.ExceptionHandlerUtils;
-import com.archimedes.model.User;
-import com.archimedes.persistence.UserRepository;
+import com.archimedes.domain.User;
+import com.archimedes.domain.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {

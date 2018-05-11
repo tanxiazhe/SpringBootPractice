@@ -5,9 +5,10 @@ import java.util.List;
 import java.util.Optional;
 
 import com.archimedes.common.util.ExceptionHandlerUtils;
-import com.archimedes.model.Conference;
-import com.archimedes.model.Presentation;
-import com.archimedes.persistence.ConferenceRepository;
+import com.archimedes.domain.Conference;
+import com.archimedes.domain.ConferenceRepository;
+import com.archimedes.domain.Presentation;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

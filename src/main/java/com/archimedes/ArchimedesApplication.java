@@ -10,7 +10,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableRedisHttpSession
 @EnableSwagger2
 @SpringBootApplication
-@ComponentScan(basePackages={"com.archimedes.*"})
 public class ArchimedesApplication {
 
 	public static void main(String[] args) {

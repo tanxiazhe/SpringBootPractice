@@ -6,7 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
-import com.archimedes.model.Conference;
+import com.archimedes.domain.Conference;
 import com.archimedes.service.ConferenceService;
 
 

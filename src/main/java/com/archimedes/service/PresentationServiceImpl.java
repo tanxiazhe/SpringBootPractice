@@ -1,9 +1,10 @@
 package com.archimedes.service;
 
 import com.archimedes.common.util.ExceptionHandlerUtils;
-import com.archimedes.model.Presentation;
-import com.archimedes.model.User;
-import com.archimedes.persistence.PresentationRepository;
+import com.archimedes.domain.Presentation;
+import com.archimedes.domain.PresentationRepository;
+import com.archimedes.domain.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

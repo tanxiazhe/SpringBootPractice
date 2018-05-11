@@ -1,4 +1,4 @@
-package com.archimedes.model;
+package com.archimedes.domain;
 
 import lombok.Data;
 import lombok.Getter;

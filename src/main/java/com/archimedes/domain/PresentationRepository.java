@@ -1,7 +1,6 @@
-package com.archimedes.persistence;
+package com.archimedes.domain;
 
 
-import com.archimedes.model.Presentation;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

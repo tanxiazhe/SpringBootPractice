@@ -1,9 +1,9 @@
 package com.archimedes.service;
 
-import com.archimedes.model.Presentation;
-
 import java.util.List;
 import java.util.Optional;
+
+import com.archimedes.domain.Presentation;
 
 public interface PresentationService {
 

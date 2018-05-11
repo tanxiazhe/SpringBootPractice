@@ -1,4 +1,4 @@
-package com.archimedes;
+package com.archimedes.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

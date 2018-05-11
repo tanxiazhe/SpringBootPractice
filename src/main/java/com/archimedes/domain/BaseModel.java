@@ -1,4 +1,4 @@
-package com.archimedes.model;
+package com.archimedes.domain;
 
 import java.sql.Timestamp;
 import java.util.Date;

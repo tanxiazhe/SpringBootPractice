@@ -1,7 +1,7 @@
 package com.archimedes.controller;
 
 import com.archimedes.common.util.ExceptionHandlerUtils;
-import com.archimedes.model.Presentation;
+import com.archimedes.domain.Presentation;
 import com.archimedes.service.PresentationService;
 
 import io.swagger.annotations.Api;

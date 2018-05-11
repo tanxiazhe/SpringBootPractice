@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.archimedes.model.User;
+import com.archimedes.domain.User;
 import com.archimedes.service.UserService;
 
 import io.swagger.annotations.Api;
