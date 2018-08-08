@@ -15,3 +15,6 @@ Run ArchimedesApplication.java
 You can find API document running at localhost:8888/swagger-ui.html
 
 Play with the APIs as you like
+
+## Features
+spring-boot session with redis
