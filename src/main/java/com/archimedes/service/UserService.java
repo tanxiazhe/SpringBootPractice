@@ -14,6 +14,9 @@ public interface UserService {
 
 	void addUser(User user);
 
+	User getUserByEmail(String email);
 
-	void getUserByUserNameAndPassword(String userName, String password);
+    void getUserByEmailAndPassword(String userName, String password);
+
+
 }

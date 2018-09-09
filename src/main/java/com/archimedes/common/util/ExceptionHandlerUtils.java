@@ -1,5 +1,6 @@
 package com.archimedes.common.util;
 
+import com.archimedes.domain.UserRepository;
 import org.springframework.data.repository.CrudRepository;
 
 import com.archimedes.common.exception.BadRequestException;
@@ -28,6 +29,13 @@ public class ExceptionHandlerUtils {
 					"bad request, inconsistent IDs between request and object: request id = %d, object id = %d",
 					expected, actual);
 			throw new BadRequestException(message);
+		}
+	}
+
+	public static void throwIfNonexistingEmail(UserRepository userRepository, String email) {
+		if (!userRepository.existsByEmail(email)) {
+			NotFoundException notFoundException = new NotFoundException("request failed, "+email + " not found");
+			throw notFoundException;
 		}
 	}
 }

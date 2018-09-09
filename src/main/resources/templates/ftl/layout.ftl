@@ -20,8 +20,9 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href='././css/login.css' />
+     <link rel="stylesheet" type="text/css" href='././css/about.css' />
     <script type="text/javascript" src="././js/login.js"></script>
-
+    <script type="text/javascript" src="././js/about.js"></script>
 </head>
 
 <body>

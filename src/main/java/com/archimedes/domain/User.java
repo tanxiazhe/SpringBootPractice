@@ -14,4 +14,7 @@ public class User extends BaseUser {
 	@ApiModelProperty
 	String userName;
 
+	@ApiModelProperty
+	String email;
+
 }

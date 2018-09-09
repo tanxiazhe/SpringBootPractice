@@ -1,0 +1,15 @@
+.leftBox{
+    width: 199px;
+    float: left;
+}
+
+.centerBox{
+     margin-left: 200px;
+     padding: 0 32px 30px;
+}
+
+a{
+     text-decoration: none;
+     cursor: pointer;
+     color: #4d4d4d;
+}

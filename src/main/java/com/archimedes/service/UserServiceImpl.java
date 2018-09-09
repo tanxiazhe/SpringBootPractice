@@ -23,6 +23,11 @@ public class UserServiceImpl implements UserService {
 		userRepository.save(user);
 	}
 
+	@Override public User getUserByEmail(String email) {
+		ExceptionHandlerUtils.throwIfNonexistingEmail(userRepository,email);
+		return userRepository.findByEmail(email);
+	}
+
 	@Override
 	public Optional<User> getUser(Long id) {
 		ExceptionHandlerUtils.throwIfNonexisting(userRepository,id);
@@ -45,15 +50,17 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void getUserByUserNameAndPassword( String userName, String password) {
-		User existdUser = userRepository.findByUserName(userName); 
-		if(existdUser ==null){
-			NotFoundException notFoundException = new NotFoundException("request failed, userName  "+userName + " not found");
+	public void getUserByEmailAndPassword( String email, String password) {
+		User existedUser = userRepository.findByEmail(email);
+		if(existedUser ==null){
+			NotFoundException notFoundException = new NotFoundException("request failed, email  "+ email + " not found");
 			throw notFoundException;
-		}else if(!existdUser.getPassword().equals(password)){
+		}else if(!existedUser.getPassword().equals(password)){
 			NotFoundException notFoundException = new NotFoundException("request failed, password is wrong.");
 			throw notFoundException;
 		}
 	}
+
+
 		
 }
