@@ -72,7 +72,7 @@ public class ManageController {
             userService.getUserByEmailAndPassword(email, password);
             session.setAttribute("email", email);
             session.setAttribute("port", request.getLocalPort());
-            center(map, request, session, email, password);
+            center(map, request, session, email);
             return "redirect:/center";
         } catch (Exception e) {
             model.addFlashAttribute("message", e.getMessage());
@@ -82,8 +82,7 @@ public class ManageController {
 
     @ApiOperation(value = "Center", notes = "Do login.")
     @RequestMapping("/center")
-    public String center(Map<String, Object> map, HttpServletRequest request, HttpSession session, String email,
-            String password) {
+    public String center(Map<String, Object> map, HttpServletRequest request, HttpSession session, String email) {
 
         String usernameSession = (String) session.getAttribute("email");
 
@@ -103,11 +102,9 @@ public class ManageController {
 
     @ApiOperation(value = "Logout", notes = "Log out.")
     @RequestMapping("/logout")
-    public String logout(Map<String, Object> map, HttpServletRequest request, HttpSession session, String email,
-            String password, SessionStatus sessionStatus) {
+    public String logout(Map<String, Object> map, HttpServletRequest request, HttpSession session, SessionStatus sessionStatus) {
         session.removeAttribute("email");
         session.removeAttribute("port");
-        System.out.println("logout:" + session.getAttribute("email"));
         sessionStatus.setComplete();
         map.put("port", request.getLocalPort());
         return "ftl/index";
@@ -136,7 +133,7 @@ public class ManageController {
             userService.addUser(user);
             session.setAttribute("email", email);
             session.setAttribute("port", request.getLocalPort());
-            center(map, request, session, userName, password);
+            center(map, request, session, userName);
             return "redirect:/center";
         } catch (Exception e) {
             model.addFlashAttribute("message", e.getMessage());

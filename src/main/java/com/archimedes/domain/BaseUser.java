@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import static com.archimedes.common.util.MD5Utils.MD5;
 
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 //@DiscriminatorColumn(name = "BUTYPE", discriminatorType = DiscriminatorType.INTEGER)
@@ -48,4 +48,8 @@ public class BaseUser extends BaseModel{
 	
 	@ApiModelProperty
 	private String password;
+
+	public void setPassword(String password) {
+		this.password = MD5(password);
+	}
 }
