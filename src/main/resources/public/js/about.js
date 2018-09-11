@@ -16,7 +16,7 @@ $(function() {
 		$(this).addClass('active');
 
  		$("#userInfoList").fadeOut(100);
-		$('#userInfoList').removeClass('active');
+		$('#userInfo').removeClass('active');
 		$("#changePwd-form").fadeOut(100);
 		$('#changePwd').removeClass('active');
 		
@@ -28,7 +28,7 @@ $(function() {
 		$(this).addClass('active');
 
  		$("#userInfoList").fadeOut(100);
-		$('#userInfoList').removeClass('active');
+		$('#userInfo').removeClass('active');
 		$("#changeUser-form").fadeOut(100);
 		$('#changeUser').removeClass('active');
 		
